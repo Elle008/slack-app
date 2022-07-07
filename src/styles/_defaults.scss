@@ -1,0 +1,20 @@
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: $white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: $dark;
+}
+
+h3 {
+  font-size: 1.3rem;
+}

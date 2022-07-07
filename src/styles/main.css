@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  background-color: #1F2D47;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+.flex-row, .flex-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.logo {
+  width: 20vmin;
+  margin-bottom: 5vmin;
+}
+
+.flex-row div:first-child, .flex-row div:last-child {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form span {
+  position: absolute;
+  font-size: 1.2rem;
+  color: #8146FF;
+}
+form input {
+  width: 50%;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color: #1F2D47;
+  padding: 10px;
+}
+form input:focus {
+  outline: none;
+}
+form ::placeholder {
+  font-family: "material symbols outlined";
+}
+form button {
+  width: 50%;
+  padding: 8px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #8146FF;
+  cursor: pointer;
+}
+form a {
+  font-size: 1rem;
+  padding: 10px 0;
+}
+
+/*# sourceMappingURL=main.css.map */
