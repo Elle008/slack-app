@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react"
-import { useState } from "react"
+import { act } from "@testing-library/react"
+import { useEffect, useRef, useState } from "react"
 import slide1 from '../assets/slide1.png'
 import slide2 from '../assets/slide2.png'
 import slide3 from '../assets/slide3.png'
@@ -8,25 +8,11 @@ const FeaturesSlider = () => {
   const [activePage, setActivePage] = useState(0)
   const slidesRef = useRef()
   const paginationRef = useRef()
-  const btnRef1 = useRef()
-  const btnRef2 = useRef()
-  const btnRef3 = useRef()
   
   const scrollToPage = (pageNum) => {
     setActivePage(pageNum)
     slidesRef.current.children[pageNum].scrollIntoView(true)
-    
   }
-
-  useEffect(() => {
-    if (activePage === 2) {
-      setActivePage(-1)
-
-    }
-    setInterval(() => {
-      scrollToPage(activePage + 1)
-    }, 3000)
-  })
 
   return (
     <div className="col">
@@ -48,9 +34,9 @@ const FeaturesSlider = () => {
         
       </div>
       <div className="pagination" ref={paginationRef}>
-        <button className="page" ref={btnRef1} onClick={ () => {scrollToPage(0)}} autoFocus></button>
-        <button className="page" ref={btnRef2} onClick={ () => {scrollToPage(1)}}></button>
-        <button className="page" ref={btnRef3} onClick={ () => {scrollToPage(2)}}></button>
+        <button className="page" onFocus={ () => {scrollToPage(0)}} autoFocus></button>
+        <button className="page" onFocus={ () => {scrollToPage(1)}}></button>
+        <button className="page" onFocus={ () => {scrollToPage(2)}}></button>
       
       </div>
 
