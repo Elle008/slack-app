@@ -2,7 +2,7 @@ import logo from '../assets/logo.png'
 
 const LoginForm = () => {
   return ( 
-    <div>
+    <div className="col">
       <img src={logo} alt="logo" className="logo"/>
       <form action="">
         <input type="email" placeholder="alternate_email"/>

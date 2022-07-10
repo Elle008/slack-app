@@ -32,7 +32,7 @@ h3 {
   margin-bottom: 5vmin;
 }
 
-.flex-row div:first-child, .flex-row div:last-child {
+.flex-row .col:first-child, .flex-row .col:last-child {
   width: 50%;
   height: 100vh;
   display: flex;
@@ -78,6 +78,63 @@ form button {
 form a {
   font-size: 1rem;
   padding: 10px 0;
+}
+
+.carousel-container {
+  width: 90%;
+  height: 90%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.slides {
+  width: 300%;
+  height: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.radio-btn {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+}
+.radio-btn input {
+  display: none;
+}
+.radio-btn label {
+  border: 2px solid #8146FF;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.radio-btn #feature1:checked ~ label[for=feature1] {
+  background-color: #8146FF;
+}
+.radio-btn #feature2:checked ~ label[for=feature2] {
+  background-color: #8146FF;
+}
+.radio-btn #feature3:checked ~ label[for=feature3] {
+  background-color: #8146FF;
 }
 
 /*# sourceMappingURL=main.css.map */

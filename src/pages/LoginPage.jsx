@@ -1,10 +1,10 @@
 import LoginForm from "../components/LoginForm"
-import FeaturesSlider from "../components/FeaturesSlider"
+import FeaturesCarousel from "../components/FeaturesCarousel"
 
 const LoginPage = () => {
   return ( 
     <div className="flex-row">
-      <FeaturesSlider/>
+      <FeaturesCarousel/>
       <LoginForm/>
     </div>
    );

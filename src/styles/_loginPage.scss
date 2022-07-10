@@ -1,7 +1,7 @@
 @import 'variables';
 
 .flex-row {
-  div:first-child, div:last-child {
+  .col:first-child, .col:last-child {
     width: 50%;
     height: 100vh;
     display: flex;
