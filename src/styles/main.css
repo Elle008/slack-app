@@ -112,29 +112,22 @@ form a {
   scroll-snap-align: start;
 }
 
-.radio-btn {
+.pagination {
   padding: 10px 0;
   display: flex;
   flex-direction: row;
 }
-.radio-btn input {
-  display: none;
-}
-.radio-btn label {
+.pagination .page {
   border: 2px solid #8146FF;
+  background-color: transparent;
   padding: 4px;
   margin: 5px;
   border-radius: 50%;
   cursor: pointer;
 }
-.radio-btn #feature1:checked ~ label[for=feature1] {
+.pagination .page:focus {
   background-color: #8146FF;
-}
-.radio-btn #feature2:checked ~ label[for=feature2] {
-  background-color: #8146FF;
-}
-.radio-btn #feature3:checked ~ label[for=feature3] {
-  background-color: #8146FF;
+  outline: none;
 }
 
 /*# sourceMappingURL=main.css.map */
