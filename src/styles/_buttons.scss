@@ -1,0 +1,47 @@
+@import 'variables';
+
+button {
+  padding: 8px 20px;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  background-color: $orange;
+  cursor: pointer;
+  
+}
+
+.icon-btn {
+  @extend button;
+  display: flex;
+  align-items: center;
+
+  span {
+    color: $white;
+    font-size: 30px;
+  }
+}
+
+.text-icon-btn {
+  background-color: transparent;
+  color: $orange;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  
+  span {
+    color: $orange;
+    padding-left: 10px;
+  }
+}
+
+.two-btn-div {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+
+   button {
+    width: fit-content;
+    padding: 10px;
+    margin: 10px;
+   }
+}
