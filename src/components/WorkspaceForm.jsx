@@ -4,13 +4,27 @@ import Step2 from "./component parts/WSFormStep2";
 import Step3 from "./component parts/WSFormStep3";
 
 const WorkspaceForm = () => {
-  
+  const [formData, setFormData] = useState(
+    {
+      workspaceId: '',
+      workspaceName: 'hello',
+      wsCoverPhoto: [],
+      members: []
+    }
+  )
   const [step, setStep] = useState(0)
-  const steps = [<Step1/>, <Step2/>, <Step3/>]
+  const steps = [
+    <Step1 formData={formData} setFormData={setFormData}/>,
+    <Step2 formData={formData} setFormData={setFormData}/>,
+    <Step3 formData={formData} setFormData={setFormData}/>
+  ]
 
   const goToNext = (e) => {
     e.preventDefault()
-    setStep(currState => currState + 1)
+    if(step === steps.length - 1) {
+      alert('form submitted')
+    }
+    else {setStep(currState => currState + 1)}
   }
 
   const goToPrev = (e) => {
@@ -44,10 +58,9 @@ const WorkspaceForm = () => {
             Prev
           </button>
           <button
-          disabled = {step === 2}
           onClick = {goToNext}
           >
-            Next
+           { step === steps.length -1 ? 'Submit' : 'Next'}
           </button>
         </div>
       </form>

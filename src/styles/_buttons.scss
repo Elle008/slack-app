@@ -45,3 +45,7 @@ button {
     margin: 10px;
    }
 }
+
+button:disabled {
+  background-color: $light-orange;
+}
