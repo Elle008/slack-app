@@ -81,6 +81,10 @@ button, .icon-btn {
   margin: 10px;
 }
 
+button:disabled, .icon-btn:disabled {
+  background-color: #F9EFE8;
+}
+
 .flex-row .col:first-child, .flex-row .col:last-child {
   width: 50%;
   height: 100vh;
