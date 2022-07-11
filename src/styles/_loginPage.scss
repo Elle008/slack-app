@@ -21,7 +21,13 @@ form {
   span {
     position: absolute;
     font-size: 1.2rem;
-    color: $purple;
+    color: $orange;
+  }
+  
+  label {
+    width: 50%;
+    text-align: left;
+    margin-bottom: 20px;
   }
 
   input {
@@ -29,8 +35,9 @@ form {
     border: none;
     border-radius: 5px;
     margin-bottom: 20px;
-    color: $dark;
+    color: $black;
     padding: 10px;
+    background-color: $light-orange;
     
     &:focus {
       outline: none;
@@ -39,20 +46,22 @@ form {
 
   ::placeholder {
     font-family: 'material symbols outlined';
+    color: $orange;
   }
 
   button {
     width: 50%;
     padding: 8px 0;
-    // margin-top: 10px;
+    color: $white;
     border: none;
     border-radius: 5px;
-    background-color: $purple;
+    background-color: $orange;
     cursor: pointer;
   }
 
   a {
     font-size: 1rem;
     padding: 10px 0;
+    color: $dark-grey;
   }
 }

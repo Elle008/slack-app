@@ -3,18 +3,26 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  color: #fff;
+  color: #1B1614;
   font-size: 1.2rem;
   text-decoration: none;
   list-style: none;
 }
 
 body {
-  background-color: #1F2D47;
+  background-color: #fff;
 }
 
 h3 {
   font-size: 1.3rem;
+}
+
+header {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  padding: 0 20px;
 }
 
 .flex-row, .flex-col {
@@ -30,6 +38,47 @@ h3 {
 .logo {
   width: 20vmin;
   margin-bottom: 5vmin;
+}
+
+button, .icon-btn {
+  padding: 8px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #F65405;
+  cursor: pointer;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+}
+.icon-btn span {
+  color: #fff;
+  font-size: 30px;
+}
+
+.text-icon-btn {
+  background-color: transparent;
+  color: #F65405;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.text-icon-btn span {
+  color: #F65405;
+  padding-left: 10px;
+}
+
+.two-btn-div {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+.two-btn-div button, .two-btn-div .icon-btn {
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
 }
 
 .flex-row .col:first-child, .flex-row .col:last-child {
@@ -51,38 +100,53 @@ form {
 form span {
   position: absolute;
   font-size: 1.2rem;
-  color: #8146FF;
+  color: #F65405;
+}
+form label {
+  width: 50%;
+  text-align: left;
+  margin-bottom: 20px;
 }
 form input {
   width: 50%;
   border: none;
   border-radius: 5px;
   margin-bottom: 20px;
-  color: #1F2D47;
+  color: #1B1614;
   padding: 10px;
+  background-color: #F9EFE8;
 }
 form input:focus {
   outline: none;
 }
 form ::placeholder {
   font-family: "material symbols outlined";
+  color: #F65405;
 }
 form button {
   width: 50%;
   padding: 8px 0;
+  color: #fff;
   border: none;
   border-radius: 5px;
-  background-color: #8146FF;
+  background-color: #F65405;
   cursor: pointer;
 }
 form a {
   font-size: 1rem;
   padding: 10px 0;
+  color: #898989;
+}
+
+#features {
+  background-color: #F9EFE8;
+  border: 20px solid #fff;
+  border-radius: 30px;
 }
 
 .carousel-container {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -111,6 +175,9 @@ form a {
   align-items: center;
   scroll-snap-align: start;
 }
+.slide img {
+  width: 70%;
+}
 
 .pagination {
   padding: 10px 0;
@@ -118,7 +185,7 @@ form a {
   flex-direction: row;
 }
 .pagination .page {
-  border: 2px solid #8146FF;
+  border: 2px solid #F65405;
   background-color: transparent;
   padding: 4px;
   margin: 5px;
@@ -126,8 +193,70 @@ form a {
   cursor: pointer;
 }
 .pagination .page:focus {
-  background-color: #8146FF;
+  background-color: #F65405;
   outline: none;
+}
+
+.workspace {
+  width: 100%;
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ws-list {
+  width: 70%;
+}
+.ws-list li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(128, 128, 128, 0.251) 0px 10px 50px;
+}
+.ws-list li .ws-info {
+  display: flex;
+  align-items: center;
+}
+.ws-list li .ws-info img {
+  width: 30%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.progress-bar {
+  width: 50%;
+  height: 20px;
+  position: relative;
+  margin-bottom: 50px;
+}
+.progress-bar div:first-child {
+  width: 100%;
+  height: 100%;
+  background-color: #F9EFE8;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+}
+.progress-bar div:last-child {
+  width: 5%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #F65405;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.progress-bar div:last-child span {
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  right: 10px;
 }
 
 /*# sourceMappingURL=main.css.map */

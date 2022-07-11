@@ -15,7 +15,7 @@ const FeaturesSlider = () => {
   }
 
   return (
-    <div className="col">
+    <div className="col" id="features">
       <div className="carousel-container">
         <div className="slides" ref={slidesRef}>
           <div className="slide page1">
@@ -24,22 +24,19 @@ const FeaturesSlider = () => {
           </div>
           <div className="slide page2" >
             <img src={slide2}/>
-            <p>Productive Team Collaboration</p></div>
+            <p>Productive Team Collaboration</p>
+          </div>
           <div className="slide page3">
             <img src={slide3}/>
             <p>User Friendly Interface</p>
           </div>
-          
         </div>
-        
       </div>
       <div className="pagination" ref={paginationRef}>
         <button className="page" onFocus={ () => {scrollToPage(0)}} autoFocus></button>
         <button className="page" onFocus={ () => {scrollToPage(1)}}></button>
         <button className="page" onFocus={ () => {scrollToPage(2)}}></button>
-      
       </div>
-
     </div>
   );
 }
