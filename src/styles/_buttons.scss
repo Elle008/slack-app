@@ -47,5 +47,5 @@ button {
 }
 
 button:disabled {
-  background-color: $light-orange;
+  opacity: 50%;
 }

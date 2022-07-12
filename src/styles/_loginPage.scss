@@ -60,8 +60,18 @@ form {
   }
 
   a {
-    font-size: 1rem;
+    font-size: .8rem;
     padding: 10px 0;
     color: $dark-grey;
+    cursor: pointer;
+
+    &:hover {
+      color: $orange
+    }
   }
+}
+
+input.placeholder-text::placeholder {
+    font: 1rem 'Inter', sans-serif;
+    color: $grey;
 }
