@@ -40,6 +40,20 @@ header {
   margin-bottom: 5vmin;
 }
 
+.round-img-s {
+  width: 60px;
+}
+
+.side {
+  width: 20vw;
+  height: 100vh;
+  justify-content: flex-start;
+}
+
+.pad-s {
+  padding: 2vmin;
+}
+
 button, .icon-btn {
   padding: 8px 20px;
   color: #fff;
@@ -82,7 +96,7 @@ button, .icon-btn {
 }
 
 button:disabled, .icon-btn:disabled {
-  background-color: #F9EFE8;
+  opacity: 50%;
 }
 
 .flex-row .col:first-child, .flex-row .col:last-child {
@@ -137,9 +151,18 @@ form button {
   cursor: pointer;
 }
 form a {
-  font-size: 1rem;
+  font-size: 0.8rem;
   padding: 10px 0;
   color: #898989;
+  cursor: pointer;
+}
+form a:hover {
+  color: #F65405;
+}
+
+input.placeholder-text::placeholder {
+  font: 1rem "Inter", sans-serif;
+  color: #C5C4C4;
 }
 
 #features {
@@ -261,6 +284,40 @@ form a {
   color: white;
   position: absolute;
   right: 10px;
+}
+
+.chips-container {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+  padding: 0 10px;
+  flex-wrap: wrap;
+}
+.chips-container .chips {
+  border: 2px solid #F65405;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.chips-container .chips span {
+  position: static;
+  cursor: pointer;
+}
+
+.center {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  padding: 50px 0;
+  box-shadow: rgba(128, 128, 128, 0.251) 0px 10px 50px;
+}
+.center input, .center label, .center button {
+  width: 80%;
 }
 
 /*# sourceMappingURL=main.css.map */
