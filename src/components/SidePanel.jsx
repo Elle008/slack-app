@@ -7,7 +7,7 @@ const SidePanel = () => {
         <img src={logo} className='round-img-s'/>
 
         <div>
-          <div class='flex-row pad-s%'>
+          <div class='flex-row pad-s'>
             Ellaine Dela Cruz
             <span class="material-symbols-outlined">settings</span>
           </div>

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const WorkspaceForm = () => {
@@ -24,6 +24,12 @@ const WorkspaceForm = () => {
     setTeam([team.filter(i => i !== item)])
   }
 
+  useEffect(() => {
+    console.log(team)
+  })
+
+ 
+
   return (
     <div className="workspace">
       <header>
@@ -46,7 +52,7 @@ const WorkspaceForm = () => {
           {team.map(item => {
             return <div className="chips flex-row">
               <p>{item}</p>
-              <span class="material-symbols-outlined" onClick={() => deleteEmail(item)}>close</span>
+              <span className="material-symbols-outlined" onClick={() => deleteEmail(item)}>close</span>
             </div>
           })}
         </div>
