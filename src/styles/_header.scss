@@ -1,0 +1,17 @@
+@import 'variables';
+
+header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $grey;
+}
+
+.user {
+  text-align: right;
+   img {
+    margin-left: 10px;
+   }
+}

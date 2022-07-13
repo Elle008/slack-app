@@ -1,27 +1,44 @@
-import logo from '../assets/workspacecover.png'
+import { NavLink } from "react-router-dom";
 
 const SidePanel = () => {
   return (
-    <div className="side flex-col pad-s">
-      <div className="user flex-row">
-        <img src={logo} className='round-img-s'/>
-
-        <div>
-          <div class='flex-row pad-s'>
-            Ellaine Dela Cruz
-            <span class="material-symbols-outlined">settings</span>
-          </div>
-          <div className="flex-row">
-            <p>Workspace1</p>
-            <span class="material-symbols-outlined">arrow_drop_down</span>
-          </div>
+    <div className="side-panel flex-col">
+      <div className="flex-col">
+        <NavLink to={'/dashboard'} className='tab flex-row'>
+          Dashboard
+        </NavLink>
+      </div>
+      <div className="flex-col">
+        <nav className='tab flex-row'>
+          Channel
+          <span className="material-symbols-outlined icon">add</span>
+        </nav>
+        <div className="flex-col sub-items">
+          <NavLink to={'/#'} className='sub-tab'>Topic 1</NavLink>
+          <NavLink to={'/#'} className='sub-tab'>Topic 1</NavLink>
+        
         </div>
       </div>
-      <ul className="nav">
-        <li className="flex-row">Channel
-          <span class="material-symbols-outlined">add</span>
-        </li>
-      </ul>
+      <div className="flex-col">
+        <NavLink to={'/saved'} className='tab flex-row'>
+          Saved
+        </NavLink>
+      </div>
+      <div className="flex-col">
+        <NavLink to={'/events'} className='tab flex-row'>
+          Events
+        </NavLink>
+      </div>
+      <div className="flex-col">
+        <nav className='tab flex-row'>
+          Direct Message
+        </nav>
+        <div className="flex-col sub-items">
+          <NavLink to={'/#'} className='sub-tab'>User 1</NavLink>
+          <NavLink to={'/#'} className='sub-tab'>User 1</NavLink>
+          <NavLink to={'/#'} className='sub-tab'>User 1</NavLink>
+        </div>
+      </div>
     </div>
   );
 }

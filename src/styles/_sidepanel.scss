@@ -1,0 +1,39 @@
+@import 'variables';
+
+.side-panel {
+  width: 15vw;
+  height: 85vh;
+  justify-content: flex-start;
+  align-items: center;
+  border-right: 1px solid $grey;
+  overflow-y: auto ;
+
+  div {
+    width: 100%;
+  }
+
+  .sub-items {
+    width: 100%;
+
+    .sub-tab {
+      width: 100%;
+      padding: 10px 20px;
+      border: 2px solid transparent;
+      overflow: hidden;
+
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+}
+
+.tab {
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 20px;
+  // border-bottom: 1px solid $grey;
+  background-color: $light-orange;
+  color: $orange;
+  font-weight: 600;
+}
