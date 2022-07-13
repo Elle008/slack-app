@@ -12,24 +12,15 @@
 }
 
 .logo {
-  width: 20vmin;
-  margin-bottom: 5vmin;
+  width: 125px;
+  height: 40px;
 }
 
-.round-img-s {
+.img-s {
   width: 60px;
 }
 
-.side {
-  width: 20vw;
-  height: 100vh;
-  justify-content: flex-start;
-}
-
-.pad-s {
-  padding: 2vmin;
-}
-
-.pad-s {
-  
+.icon {
+  color: $orange;
+  cursor: pointer;
 }
