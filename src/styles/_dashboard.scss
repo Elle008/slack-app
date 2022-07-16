@@ -1,0 +1,141 @@
+@import 'variables';
+
+
+.dashboard {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dashboard > .col:first-child {
+  width: 60%;
+  margin-right: 50px;
+  justify-content: flex-start;
+}
+
+.dashboard > .col:last-child{
+  width: 40%;
+  justify-content: flex-start;
+}
+
+.new-post {
+  textarea, button {
+    width: 100%;
+  }
+  img {
+    // align-self: flex-start;
+    margin: 5px;
+  }
+
+  div {
+    width: 90%;
+    align-items: flex-start;
+  }
+}
+
+.post {
+
+  .info {
+    width: 100%;
+    justify-content: flex-start;
+    position: relative;
+
+    div {
+      align-items: flex-start;
+    }
+
+    span {
+      position: absolute;
+      right: 10px;
+    }
+  }
+}
+
+.content {
+  margin: 20px 0;
+}
+
+.post-data {
+  width: 100%;
+  color: grey;
+  padding: 10px;
+  justify-content: space-between;
+  
+  div {
+    justify-content: flex-start;
+
+    span {
+      margin-left: 10px;
+     }
+  }
+}
+
+.post-btn {
+  width: 100%;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+  justify-content: space-around;
+  padding: 10px;
+
+  span {
+    margin-right: 10px;
+  }
+}
+
+.replies, .chatbox {
+  margin-top: 10px;
+  padding-top: 10px;
+  align-items: flex-start;
+
+  div, li {
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+
+  .reply, .chat {
+    padding: 10px;
+    background-color: $light-orange;
+    border-radius: 10px;
+    align-items: flex-start;
+
+    span {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+.widget {
+  width: 80%;
+  
+  div {
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .widget-header {
+    justify-content: space-between;
+    margin-top: 0;
+
+    span {
+      margin-left: 5px;
+    }
+  }
+
+  img {
+    margin: 10px 8px;
+  }
+
+  ul {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  li {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid $grey;
+  }
+}

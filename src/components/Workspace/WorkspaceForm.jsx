@@ -34,7 +34,7 @@ const WorkspaceForm = () => {
     <div className="workspace">
       <header>
         <h2>Create New Workspace</h2>
-        <button className="text-icon-btn" onClick={goToWorkspaces}>
+        <button className="trans-btn" onClick={goToWorkspaces}>
          Go To Your Workspaces
           <span className="material-symbols-outlined">arrow_left</span>
         </button>

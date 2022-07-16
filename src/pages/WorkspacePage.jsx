@@ -1,4 +1,4 @@
-import WorkspaceList from "../components/WorkspaceList";
+import WorkspaceList from "../components/Workspace/WorkspaceList";
 
 const WorkspacePage = () => {
   return (

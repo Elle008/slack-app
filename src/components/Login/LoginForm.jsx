@@ -1,4 +1,4 @@
-import logo from '../assets/logo.png'
+import logo from '../../assets/logo.png'
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
@@ -9,7 +9,7 @@ const LoginForm = () => {
   return ( 
     <div className="col">
       <img src={logo} alt="logo" className="logo"/>
-      <form action="">
+      <form action="" className="login">
         <input type="email" placeholder="alternate_email"/>
         <input type="password" placeholder="lock"/>
         <button type="submit">Sign In</button>
