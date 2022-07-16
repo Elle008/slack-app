@@ -160,6 +160,7 @@ form {
 form .error {
   padding-bottom: 5px;
   width: 50%;
+  color: red;
 }
 form h3 {
   margin-bottom: 20px;
@@ -322,7 +323,7 @@ select:focus {
   padding: 50px 0;
   box-shadow: rgba(128, 128, 128, 0.251) 0px 10px 50px;
 }
-.workspace form input, .workspace form label, .workspace form button {
+.workspace form input, .workspace form label, .workspace form button, .workspace form .error {
   width: 80%;
 }
 

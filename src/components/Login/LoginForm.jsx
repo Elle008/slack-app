@@ -17,7 +17,7 @@ const LoginForm = () => {
   }
 
   const validateInput = (e) => {
-    if (!isEmail(e.target.value)) {
+    if (e.target.value && !isEmail(e.target.value)) {
       setError('Invalid email address')
     }
   }
