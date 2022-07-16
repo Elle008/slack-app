@@ -17,7 +17,7 @@
     justify-content: flex-start;
     border-radius: 10px;
 
-    input, button, textarea, label {
+    input, button, textarea, label, .error {
       width: 100%;
     }
   }
@@ -37,5 +37,9 @@
     right: 30px;
     width: fit-content;
     background-color: none;
+  }
+
+  .chips-container {
+    width: 100%;
   }
 }

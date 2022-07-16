@@ -7,7 +7,7 @@ const WorkspaceForm = () => {
   const inputRef = useRef()
   const [error, setError] = useState({
     nameInput: '',
-    emailInput: ''
+    membersInput: ''
   })
   const [workspace, setWorkspace] = useState({
     name: '',
@@ -40,7 +40,7 @@ const WorkspaceForm = () => {
         setWorkspace(prev => ({...prev, members: [...prev.members, e.target.value]}))
       }
       else {
-        setError(prev => ({...prev, emailInput: 'Invalid email address'}))
+        setError(prev => ({...prev, membersInput: 'Invalid email address'}))
       }      
     }
   }
@@ -57,7 +57,7 @@ const WorkspaceForm = () => {
   useEffect(() => {
     inputRef.current.value = ''
   }, [workspace])
-  
+
   return (
     <div className="workspace">
       <header>
@@ -74,13 +74,13 @@ const WorkspaceForm = () => {
         <input 
           placeholder="Ex. ABC Design Team"
           value={workspace.name}
-          onChange={e => {handleChange(e, 'nameInput')}}/>
+          onChange={e => handleChange(e, 'nameInput')}/>
         <label>Invite your teammates to this workspace</label>
-        {error.emailInput && <p className="error">{error.emailInput}</p>}
+        {error.membersInput && <p className="error">{error.membersInput}</p>}
         <input
         className='placeholder-text'
         ref={inputRef}
-        onChange={e => {handleChange(e, 'emailInput')}}
+        onChange={e => handleChange(e, 'membersInput')}
         onKeyPress={handleKeyPress}
         placeholder="Type an email address, then press Enter"/>
         <div className="chips-container">

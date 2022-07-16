@@ -28,6 +28,10 @@ form {
     width: 50%;
     text-align: left;
     margin-bottom: 20px;
+
+    p {
+      color: $orange;
+    }
   }
 
   input, textarea {

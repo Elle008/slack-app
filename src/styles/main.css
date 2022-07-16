@@ -175,6 +175,9 @@ form label {
   text-align: left;
   margin-bottom: 20px;
 }
+form label p {
+  color: #F65405;
+}
 form input, form textarea {
   margin-bottom: 20px;
 }
@@ -559,7 +562,7 @@ form.new-post {
   justify-content: flex-start;
   border-radius: 10px;
 }
-.full-modal form input, .full-modal form button, .full-modal form textarea, .full-modal form label {
+.full-modal form input, .full-modal form button, .full-modal form textarea, .full-modal form label, .full-modal form .error {
   width: 100%;
 }
 .full-modal label.flex-row {
@@ -575,6 +578,9 @@ form.new-post {
   right: 30px;
   width: fit-content;
   background-color: none;
+}
+.full-modal .chips-container {
+  width: 100%;
 }
 
 .events > .col:first-child {
