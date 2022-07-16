@@ -1,7 +1,7 @@
 import React from 'react';
-import workspaceImage from '../assets/workspacecover.png'
+import workspaceImage from '../../assets/workspacecover.png'
 import { useNavigate } from "react-router-dom";
-import { workspaces } from "../data/workspaces";
+import { workspaces } from "../../data/workspaces";
 const WorkspaceList = () => {
   const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ const WorkspaceList = () => {
             <p>{`${item.members.length} members`}</p>
           </div>
         </div>
-        <button className="icon-btn">
+        <button className="btn">
           Enter Workspace
           <span class="material-symbols-outlined">arrow_right</span>
         </button>
@@ -29,8 +29,8 @@ const WorkspaceList = () => {
   return (
     <div className="workspace">
       <header>
-        <h2>Your Workspaces</h2>
-        <button className="text-icon-btn" onClick={goToCreateWorkspace}>
+        <h3>Your Workspaces</h3>
+        <button className="trans-btn" onClick={goToCreateWorkspace}>
           Create Workspace
           <span class="material-symbols-outlined">library_add</span>
         </button>

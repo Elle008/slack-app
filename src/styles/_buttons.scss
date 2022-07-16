@@ -10,7 +10,7 @@ button {
   
 }
 
-.icon-btn {
+.btn {
   @extend button;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@ button {
   }
 }
 
-.text-icon-btn {
+.trans-btn {
   background-color: transparent;
   color: $orange;
   display: flex;
@@ -48,4 +48,10 @@ button {
 
 button:disabled {
   opacity: 50%;
+}
+
+.icon-btn {
+  background-color: transparent;
+  color: $orange;
+  
 }

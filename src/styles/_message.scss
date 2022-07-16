@@ -1,0 +1,54 @@
+@import 'variables';
+
+.message {
+  padding-top: 0;
+  padding-bottom: 10px;
+  h3 {
+    width: 50%;
+    padding-top: 10px;
+  }
+}
+
+.chatbox {
+  width: 50%;
+  height: 70%;
+  padding: 20px;
+  overflow-y: auto;
+
+  &.box {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+}
+
+.new-chat {
+  width: 50%;
+  height: 17%;
+  margin: 10px 0;
+  padding: 0;
+  position: relative;
+  
+
+   textarea {
+    height: 100%;
+    width: 100%;
+    background-color: $white;
+    border: 1px solid $orange;
+    margin-bottom: 0;
+   }
+
+   button {
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    width: fit-content;
+   }
+}
+
+.chat.grey {
+  background-color: rgb(222, 220, 220);
+  align-self: flex-end;
+}

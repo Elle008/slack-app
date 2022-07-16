@@ -1,4 +1,4 @@
-import WorkspaceForm from "../components/WorkspaceForm";
+import WorkspaceForm from "../components/Workspace/WorkspaceForm";
 
 const CreateWorkspacePage = () => {
   return (

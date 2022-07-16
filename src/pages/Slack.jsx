@@ -1,22 +1,20 @@
+import React, {useState} from 'react';
+import { Outlet } from 'react-router-dom'
 import SidePanel from "../components/SidePanel";
 import Header from "../components/Header";
 import CreateChannel from "../components/CreateChannel";
-import CreateEvent from "../components/CreateEvent";
-import Posts from "../components/Posts";
-import NewPost from "../components/NewPost";
-import Chat from "../components/Chat";
 
 const Slack = () => {
+  const [showCreateChannel, setShowCreateChannel] = useState(false)
+  
   return (
     <div>
       <Header/>
-      <SidePanel/>
-      <NewPost/>
-      <Posts/>
-      <CreateChannel/>
-      <CreateEvent/>
-      <Chat/>
-      
+      <section className="flex-row">
+        <SidePanel setShowCreateChannel={setShowCreateChannel}/>
+        <Outlet/>
+      </section>
+      <CreateChannel showCreateChannel={showCreateChannel} setShowCreateChannel={setShowCreateChannel}/>    
     </div>
     
   );
