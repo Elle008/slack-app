@@ -56,8 +56,12 @@ const SignUpForm = ({user, setUser}) => {
     navigate('/')
   }
 
-  const goToWorkspace = () => {
-    navigate('/create-workspace')
+  const goToWorkspace = (e) => {
+    const noError = Object.values(error).every(item => !item)
+    e.preventDefault()
+    if (noError) {
+      navigate('/create-workspace')
+    }
   }
 
   return ( 
