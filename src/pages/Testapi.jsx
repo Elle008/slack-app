@@ -16,30 +16,30 @@ const TestApi = () => {
   
  
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const data = {
-      email: user.email,
-      password: user.password,
-      password_confirmation: user.confirm
-    }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   const data = {
+  //     email: user.email,
+  //     password: user.password,
+  //     password_confirmation: user.confirm
+  //   }
     
-    fetch('http://206.189.91.54/api/v1/auth/', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((response) => {
-      console.log(response)
-      return response.json()
-    })
-    .then((result) => {
-      console.log(result)
-    })
-  }
+  //   fetch('http://206.189.91.54/api/v1/auth/', {
+  //     method: 'POST',
+  //     mode: 'no-cors',
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then((response) => {
+  //     console.log(response)
+  //     return response.json()
+  //   })
+  //   .then((result) => {
+  //     console.log(result)
+  //   })
+  // }
 
   // const fetchData = () => {
   //   setIsLoading(true)
@@ -61,7 +61,7 @@ const TestApi = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         Sign up
         <input type="text" placeholder="email" value={user.email} onChange={(e) => {
           setUser(prev => ({...prev, email: e.target.value}))
