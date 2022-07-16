@@ -14,7 +14,7 @@ import Message from "./components/DM/Message";
 
 function App() {
   const [user, setUser] = useState({
-    userName: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
