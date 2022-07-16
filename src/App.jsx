@@ -24,10 +24,10 @@ function App() {
   return (
     <Routes>
       <Route index element={<LoginPage />} />
-      <Route path='sign-up'element={<SignUpPage user={user} setUser={setUser} />} />
-      <Route path='workspaces'element={<WorkspacePage />} />
-      <Route path='create-workspace'element={<CreateWorkspacePage />} />
-      <Route path='api-test'element={<TestApi />} />
+      <Route path='sign-up' element={<SignUpPage user={user} setUser={setUser} />} />
+      <Route path='workspaces' element={<WorkspacePage />} />
+      <Route path='create-workspace' element={<CreateWorkspacePage />} />
+      <Route path='api-test' element={<TestApi />} />
       <Route path='app' element={<Slack />}>
         <Route index element={<Dashboard />} />
         <Route path='channel' element={<Channel />} />
