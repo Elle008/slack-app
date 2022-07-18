@@ -1,11 +1,11 @@
 import LoginForm from "../components/Login/LoginForm";
 import FeaturesCarousel from "../components/Login/FeaturesCarousel"
 
-const LoginPage = () => {
+const LoginPage = ({user, setUser}) => {
   return ( 
     <div className="flex-row">
       <FeaturesCarousel/>
-      <LoginForm/>
+      <LoginForm user={user} setUser={setUser}/>
     </div>
    );
 }

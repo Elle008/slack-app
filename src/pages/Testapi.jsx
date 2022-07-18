@@ -7,7 +7,10 @@ const TestApi = () => {
   const [user, setUser] = useState({
     email: '',
     password: '',
-    confirm: ''
+    confirm: '',
+    accessToken:'',
+    expiry: '',
+    client: ''
   })
   const [login, setLogin] = useState({
     email: '',
@@ -16,37 +19,42 @@ const TestApi = () => {
   
  
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   const data = {
-  //     email: user.email,
-  //     password: user.password,
-  //     password_confirmation: user.confirm
-  //   }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const data = {
+      email: user.email,
+      password: user.password,
+      password_confirmation: user.confirm
+    }
     
-  //   fetch('http://206.189.91.54/api/v1/auth/', {
-  //     method: 'POST',
-  //     mode: 'no-cors',
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then((response) => {
-  //     console.log(response)
-  //     return response.json()
-  //   })
-  //   .then((result) => {
-  //     console.log(result)
-  //   })
-  // }
+    fetch('http://206.189.91.54/api/v1/auth/sign_in', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      setUser(prev => ({...prev, accessToken: response.headers.get('access-token') }) )
+      setUser(prev => ({...prev, expiry: response.headers.get('client') }) )
+      setUser(prev => ({...prev, client: response.headers.get('expiry') }) )
+    })
+  }
 
   // const fetchData = () => {
   //   setIsLoading(true)
-  //   fetch('http://206.189.91.54/api/v1/users')
-  //     .then((response) => response.json)
+  //   fetch('http://206.189.91.54/api/v1/users', {
+  //     headers: {
+  //       'expiry': user.expiry,
+  //       "uid": user.email,
+  //       "access-token": user.accessToken, 
+  //       "client": user.client
+  //     }
+  //   })
+  //     .then((response) => {
+  //       setUsers(response)
+  //       return response.json()})
   //     .then((result) => {
-  //       setUsers(result)
   //       setIsLoading(false)
   //     })
   //     .catch((error) => {
@@ -57,11 +65,11 @@ const TestApi = () => {
 
   // useEffect(() => {
   //   fetchData()
-  // }, [])
+  // }, [user.accessToken])
 
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         Sign up
         <input type="text" placeholder="email" value={user.email} onChange={(e) => {
           setUser(prev => ({...prev, email: e.target.value}))
@@ -69,16 +77,14 @@ const TestApi = () => {
         <input type="text" placeholder="password" value={user.password} onChange={(e) => {
           setUser(prev => ({...prev, password: e.target.value}))
         }}/>
-        <input type="text" placeholder="confirm" value={user.confirm} onChange={(e) => {
-          setUser(prev => ({...prev, confirm: e.target.value}))
-        }}/>
+        
         <button type="submit">Sign Up</button>
       </form>
     
-      {error && <p>error.message</p>}
+      {error && <p>{error.message}</p>}
       {isLoading && <p>Loading...</p>}
       <ul>
-
+        {users.map(item => <p>{item}</p>)}
       </ul>
     </div>
   );

@@ -1,31 +1,34 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.png'
-import { isEmail } from "../../helpers/emailValidation";
+import api from "../../api/api";
 
-const LoginForm = () => {
+const LoginForm = ({user, setUser}) => {
   const navigate = useNavigate()
-  const [error, setError] = useState('')
-  const [loginInput, setLoginInput] = useState({
-    email: '',
-    password: ''
-  })
+  const [error, setError] = useState()
 
-  const handleOnChange = (e, input) => {
-    setLoginInput(prev => ({...prev, [input]: e.target.value}))
-    setError('')
+  const handleChange = (e, input) => {
+    setUser(prev => ({...prev, [input]: e.target.value}))
+    setError()
   }
 
-  const validateInput = (e) => {
-    if (e.target.value && !isEmail(e.target.value)) {
-      setError('Invalid email address')
-    }
-  }
-
-  const handleLoginSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (!error) {
+    const data = {
+      email: user.email,
+      password: user.password
+    }
+    try  {
+      const response = await api.post('/api/v1/auth/sign_in', data )
+
+      setUser(prev => ({...prev, accessToken: response.headers['access-token']}))
+      setUser(prev => ({...prev, expiry: response.headers['client']}))
+      setUser(prev => ({...prev, client: response.headers['expiry']}))
+
       navigate('/workspaces')
+    }
+    catch (error) {
+      setError(error.response.data.errors)
     }
   }
   
@@ -36,19 +39,19 @@ const LoginForm = () => {
   return ( 
     <div className="col">
       <img src={logo} alt="logo" className="logo"/>
-      <form className="login" onSubmit={handleLoginSubmit}>
-        {error && <p className="error">{error}</p>}
+      <form className="login" onSubmit={handleSubmit}>
+        {error && error.map(err => <p className="error">{err}</p>)}
         <input
           placeholder="alternate_email"
-          value={loginInput.email}
-          onBlur={validateInput}
-          onChange={(e) => {handleOnChange(e, 'email')}}
+          value={user.email}
+          onChange={(e) => {handleChange(e, 'email')}}
         />
         <input
           type="password"
+          autoComplete='off'
           placeholder="lock"
-          value={loginInput.password}
-          onChange={(e) => {handleOnChange(e, 'password')}}
+          value={user.password}
+          onChange={(e) => {handleChange(e, 'password')}}
         />
         <button type="submit">Sign In</button>
         <a onClick={goToSignUp}>Don't have an account? Create Account</a>

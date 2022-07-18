@@ -15,15 +15,18 @@ import TestApi from "./pages/Testapi";
 
 function App() {
   const [user, setUser] = useState({
-    userId:'',
+    id:'',
     username: '',
     email: '',
     password: '',
     confirmPassword: '',
+    accessToken:'',
+    expiry: '',
+    client: ''
   })
   return (
     <Routes>
-      <Route index element={<LoginPage />} />
+      <Route index element={<LoginPage user={user} setUser={setUser}/>} />
       <Route path='sign-up' element={<SignUpPage user={user} setUser={setUser} />} />
       <Route path='workspaces' element={<WorkspacePage />} />
       <Route path='create-workspace' element={<CreateWorkspacePage />} />
