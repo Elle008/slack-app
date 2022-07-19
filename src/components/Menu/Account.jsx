@@ -3,11 +3,8 @@ import photo from '../../assets/profile.png'
 import { useNavigate } from "react-router-dom";
 import { workspaces } from "../../data/objects";
 
-const AccountModal = ({user, currWorkspace, showSettings, setShowSettings}) => {
+const AccountModal = ({user, showSettings, setShowSettings}) => {
   const navigate = useNavigate()
-  const goToWorkspace = () => {
-    navigate('/workspace', { replace: true })
-  }
 
   const logout = () => {
     navigate('/')
@@ -20,13 +17,12 @@ const AccountModal = ({user, currWorkspace, showSettings, setShowSettings}) => {
     <div className="account box flex-col" style={ showSettings ? {display: 'flex'} : {display: 'none'}}>
       <span className="material-symbols-outlined close" onClick={closeModal}>close</span>
       <div className="flex-row">
-        <img src={photo} className='img-xs'/>
+        <img src={user.image} className='img-xs'/>
         <span className="txt-xs">change image</span>
       </div>
-      <p>{user.username}</p>
-      <p>{currWorkspace.name}</p>
-      <button onClick={goToWorkspace}>Switch Workspace</button>
-      <a className="txt-xs" onClick={logout}>Sign out</a>
+      <p>{user.name}</p>
+      <p>{user.id}</p>
+      <button onClick={logout}>Sign Out</button>
     </div>
   );
 }

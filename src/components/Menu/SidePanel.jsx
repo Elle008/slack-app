@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const SidePanel = ({setShowCreateChannel, currWorkspace, user}) => {
+const SidePanel = ({setShowCreateChannel, user}) => {
 
   const handleClick = () => {
     setShowCreateChannel(true)
@@ -18,8 +18,6 @@ const SidePanel = ({setShowCreateChannel, currWorkspace, user}) => {
           <span className="material-symbols-outlined icon" onClick={handleClick}>add</span>
         </nav>
         <div className="flex-col sub-items">
-          {currWorkspace.channels.map(item =>
-          <NavLink to={'/app/channel'} className='sub-tab'>{item.name}</NavLink>)}
           <NavLink to={'/app/channel'} className='sub-tab'>Topic 1</NavLink>
           <NavLink to={'/app/channel'} className='sub-tab'>Topic 1</NavLink>
         </div>

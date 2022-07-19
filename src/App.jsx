@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import { syncWithLocal } from "./helpers/saveToLocal";
+import pic from './assets/profile.png'
 import LoginPage from './pages/LoginPage';
 import WorkspacePage from "./pages/WorkspacePage";
 import CreateWorkspacePage from "./pages/CreateWorkspacePage";
@@ -13,59 +14,41 @@ import Events from "./components/Events/Events";
 import Message from "./components/DM/Message";
 import WorkspaceList from "./components/Workspace/WorkspaceList";
 import WorkspaceForm from "./components/Workspace/WorkspaceForm";
+import { allUsers } from "./helpers/searchUsers";
 
 
 function App() {
   const [user, setUser] = useState({
     id:'',
-    username: '',
+    name: '',
     email: '',
     password: '',
-    image: '',
+    image: {pic},
     accessToken:'',
     expiry: '',
     client: '',
-    workspaces: [],
   })
 
-  const [currentWorkspace, setCurrentWorkspace] = useState({
-    name:'',
-    members:[],
-    channels: []
-  })
+  const [users, setUsers] = useState([])
   
   useEffect(() => {
     syncWithLocal(user.id, user, setUser)
+    allUsers(user, setUsers)
   }, [user.id])
 
   useEffect(() => {
-    console.log(user);
-    console.log(currentWorkspace);
-  },[currentWorkspace])
+    console.log(users);
+  }, [users])
 
   return (
     <Routes>
       <Route index element={<LoginPage user={user} setUser={setUser}/>} />
       <Route path='sign-up' element={<SignUpPage user={user} setUser={setUser} />} />
-      <Route path='workspace' element={<WorkspacePage />}>
-        <Route index element={<WorkspaceList
-          workspaces={user.workspaces}
-          setCurrWorkspace={setCurrentWorkspace}
-          />}/>
-        <Route path='create' element={<WorkspaceForm
-          user={user}
-          setUser={setUser}
-          setCurrWorkspace={setCurrentWorkspace}/>} />
-      </Route>
-      <Route path='app' element={<Slack
+      <Route path='app' element={<Slack 
         user={user}
-        currWorkspace={currentWorkspace}
-        setCurrWorkspace={setCurrentWorkspace}
+        users={users}
       />}>
-        <Route index element={<Dashboard 
-          user={user}
-          currWorkspace={currentWorkspace}
-        />} />
+        <Route index element={<Dashboard user={user}/>} />
         <Route path='channel' element={<Channel />} />
         <Route path='saved' element={<Saved />} />
         <Route path='events' element={<Events />} />

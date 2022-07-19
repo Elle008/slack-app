@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { isEmail } from "../../helpers/emailValidation"
-import { addWorkspaceToLocal } from "../../helpers/saveToLocal"
-import { searchUser } from "../../helpers/searchUsers"
 
 const WorkspaceForm = ({ user, setUser, setCurrWorkspace }) => {
 	const navigate = useNavigate()
@@ -23,7 +21,6 @@ const WorkspaceForm = ({ user, setUser, setCurrWorkspace }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (workspace.name) {
-			addWorkspaceToLocal(user.id, workspace)
 			setUser((prev) => ({ ...prev, workspaces: [...prev.workspaces, workspace] }))
 			setCurrWorkspace((prev) => ({ ...prev, name: workspace.name, members: workspace.members }))
 			navigate("/app", { replace: true })
@@ -45,7 +42,6 @@ const WorkspaceForm = ({ user, setUser, setCurrWorkspace }) => {
 			e.preventDefault()
 
 			if (isEmail(e.target.value)) {
-				searchUser(user, e.target.value, setMember, setError)
 			} else {
 				setError("Invalid email address")
 			}
