@@ -23,9 +23,27 @@
     padding: 50px 0;
     box-shadow: rgba(128, 128, 128, 0.251) 0px 10px 50px;
   
-     input, label, button {
+     input, label, button, .error {
       width: 80%;
      }
+  }
+
+  .box {
+    width: 70%;
+    margin: 50px;
+    padding: 50px;
+    justify-content: center;
+    align-items: center;
+    
+    h3 {
+      font-weight: 400;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 30px;
+      font-size: 1.2rem;
+    }
   }
 }
 

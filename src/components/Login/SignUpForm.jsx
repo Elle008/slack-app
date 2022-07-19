@@ -1,102 +1,76 @@
 import logo from '../../assets/logo.png'
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { isEmail } from "../../helpers/emailValidation";
+import { useState } from "react";
+import api from "../../api/api";
 
 const SignUpForm = ({user, setUser}) => {
   const navigate = useNavigate()
-  const [error, setError] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-  })
+  const [error, setError] = useState('')
 
-  const handleInputChange = (e) => {
-    setUser(prev => ({...prev, [e.target.name]: e.target.value}))
-    setError(prev => ({...prev, [e.target.name]: ''}))
+  const handleChange = (e, input) => {
+    setUser(prev => ({...prev, [input]: e.target.value}))
+    setError()
   }
 
-  const validateInput = (e) => {
-    switch(e.target.name) {
-      case 'username':
-        if (!e.target.value) {
-          setError(prev => ({...prev, username: 'Name is required'}))
-          break
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = {
+      name: user.username,
+      email: user.email,
+      password: user.password,
+      password_confirmation: user.confirmPassword
+    }
+    try {
+      const response = await api.post('/api/v1/auth/', data)
 
-      case 'email':
-        if (!e.target.value) {
-          setError(prev => ({...prev, email: 'Email is required'}))
-          break
-        }
+      setUser(prev => ({...prev, accessToken: response.headers['access-token']}))
+      setUser(prev => ({...prev, expiry: response.headers['client']}))
+      setUser(prev => ({...prev, client: response.headers['expiry']}))
+      setUser(prev => ({...prev, id: response.data.data['id']}))
 
-        else if (!isEmail(e.target.value)) {
-          setError(prev => ({...prev, email: 'Invalid email address'}))
-        }
-
-      case 'password':
-        if (!e.target.value) {
-          setError(prev => ({...prev, password: 'Create a password'}))
-          break
-        }
-
-      case 'confirmPassword':
-        if (!e.target.value) {
-          setError(prev => ({...prev, confirmPassword: 'Confirm your password'}))
-        }
-        
-        else if (e.target.value !== user.password) {
-          setError(prev => ({...prev, confirmPassword: 'Password doesnt match'}))
-        }
+      navigate('/workspace/create', { replace: true })
+    }
+    catch (error) {
+      setError(error.response.data.errors.full_messages) 
     }
   }
-  
+
   const goToLogin = () => {
     navigate('/')
-  }
-
-  const goToWorkspace = () => {
-    navigate('/create-workspace')
   }
 
   return ( 
     <div className="col">
       <img src={logo} alt="logo" className="logo"/>
-      <form action="" onSubmit={goToWorkspace}>
-        {error.username && <p className="error">{error.username}</p>}
+      
+      <form action="" onSubmit={handleSubmit}>
+        {error && error.map(err => <p className="error">{err}</p>)}
         <input 
           value={user.username} 
-          name='username' 
           placeholder="Full Name"
-          onBlur={validateInput}
-          onChange = {handleInputChange}
+          onChange = {e => handleChange(e, 'username')}
         />
-        {error.email && <p className="error">{error.email}</p>}
+       
         <input 
           value={user.email} 
-          name='email' 
           placeholder="Email Address"
-          onBlur={validateInput}
-          onChange = {handleInputChange}
+          onChange = {e => handleChange(e, 'email')}
         />
-        {error.password && <p className="error">{error.password}</p>}
+
         <input 
           value={user.password} 
-          name='password' 
           type="password" 
+          autoComplete="off"
           placeholder="Password"
-          onBlur={validateInput}
-          onChange = {handleInputChange}
+          onChange = {e => handleChange(e, 'password')}
         />
-        {error.confirmPassword && <p className="error">{error.confirmPassword}</p>}
+
         <input 
           value={user.confirmPassword} 
-          name='confirmPassword' 
           type="password" 
+          autoComplete="off"
           placeholder="Confirm Password"
-          onBlur={validateInput}
-          onChange = {handleInputChange}
+          onChange = {e => handleChange(e, 'confirmPassword')}
         />
         <button type="submit">Create Account</button>
         <a onClick={goToLogin}>Sign in with existing account</a>

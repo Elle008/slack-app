@@ -12,8 +12,50 @@ header {
 
 .user {
   text-align: right;
+  position: relative;
+  cursor: pointer;
 
    img {
     margin-right: 0;
    }
+}
+
+.account {
+  background-color: $white;
+  width: 180px;
+  height: 240px;
+  position: absolute;
+  top: 10vh;
+  right: 30px;
+  text-align: left;
+  justify-content: space-between;
+  span {
+    margin-left: 10px;
+    color: $orange;
+  }
+
+  p {
+    margin: 5px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+  }
+  button {
+    font-size: .8rem;
+  }
+
+  a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: $grey;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
 }

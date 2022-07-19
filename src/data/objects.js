@@ -30,3 +30,21 @@ export const workspaces = [
     members: ['user1', 'user2', 'user3', 'user4', 'user5']
   }
 ]
+
+export const channel = {
+  id: -1,
+  name:'',
+  members: [],
+  messages: [],
+}
+
+export const sentMessage = {
+  receiverId: -1,
+  receiverClass: '',
+  body: ''
+}
+
+export const receivedMessage = {
+  senderId: -1,
+  body: ''
+}

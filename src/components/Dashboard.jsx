@@ -4,7 +4,7 @@ import NewPost from "./Channel/NewPost";
 import Members from "./Members";
 import EventsWidget from "./EventsWidget";
 
-const Dashboard = () => {
+const Dashboard = ({currWorkspace, user}) => {
   return (
     <main className="dashboard flex-row">
       <div className="col">
@@ -12,7 +12,7 @@ const Dashboard = () => {
         <Posts/>
       </div>
       <div className="col">
-        <Members/>
+        <Members members={currWorkspace.members} user={user}/>
         <EventsWidget/>
       </div>
     </main>

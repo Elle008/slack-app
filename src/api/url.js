@@ -1,0 +1,8 @@
+export const registerURL = '/api/v1/auth/'
+export const signInURL = '/api/v1/auth/sign_in'
+export const sendMessageURL = '/api/v1/messages'
+export const retrieveMessageURL = '/api/v1/messages?receiver_id=1&receiver_class=User'
+export const createChannelURL = '/api/v1/channels'
+export const channelDetailsURL = '/api/v1/channels/3'
+export const addMemberToChannelURL = '/api/v1/channel/add_member'
+export const allUsersURL = '/api/v1/users'

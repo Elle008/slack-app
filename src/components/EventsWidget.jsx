@@ -5,7 +5,7 @@ const EventsWidget = () => {
         <h4>Upcoming Events</h4>
         <p className="flex-row">
           3
-          <span class="material-symbols-outlined icon">calendar_month</span>
+          <span className="material-symbols-outlined icon">calendar_month</span>
         </p>
       </div>
       <ul>

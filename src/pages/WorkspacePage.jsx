@@ -1,9 +1,10 @@
 import WorkspaceList from "../components/Workspace/WorkspaceList";
+import { Outlet } from "react-router-dom";
 
 const WorkspacePage = () => {
   return (
     <div>
-      <WorkspaceList/>
+      <Outlet/>
     </div>
   );
 }

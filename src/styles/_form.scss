@@ -8,9 +8,14 @@ form {
   align-items: center;
   margin: 30px 0;
 
-  .error {
+  .error, .apierror {
     padding-bottom: 5px;
     width: 50%;
+    color: red;
+  }
+
+  .apierror {
+    text-align: center;
   }
 
   h3 {
@@ -27,6 +32,10 @@ form {
     width: 50%;
     text-align: left;
     margin-bottom: 20px;
+
+    p {
+      color: $orange;
+    }
   }
 
   input, textarea {
