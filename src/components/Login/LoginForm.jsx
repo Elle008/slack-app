@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '../../assets/logo.png'
 import api from "../../api/api";
+import { saveToLocal } from "../../helpers/saveToLocal";
+import { searchUser } from "../../helpers/searchUsers";
 
 const LoginForm = ({user, setUser}) => {
   const navigate = useNavigate()
@@ -22,10 +24,11 @@ const LoginForm = ({user, setUser}) => {
       const response = await api.post('/api/v1/auth/sign_in', data )
 
       setUser(prev => ({...prev, accessToken: response.headers['access-token']}))
-      setUser(prev => ({...prev, expiry: response.headers['client']}))
-      setUser(prev => ({...prev, client: response.headers['expiry']}))
+      setUser(prev => ({...prev, expiry: response.headers['expiry']}))
+      setUser(prev => ({...prev, client: response.headers['client']}))
+      setUser(prev => ({...prev, id: response.data.data['id']}))
 
-      navigate('/workspaces')
+      navigate('/workspace', { replace: true })
     }
     catch (error) {
       setError(error.response.data.errors)

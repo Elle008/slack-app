@@ -11,7 +11,7 @@ const Posts = () => {
             <p>Ellaine Dela Cruz</p>
             <p className="txt-xs">Jan 1 • 8:00am</p>
           </div>
-          <span class="material-symbols-outlined icon">bookmark</span>
+          <span className="material-symbols-outlined icon">bookmark</span>
         </div>
         <div className='flex-row content'>
           <p>This is a sample post</p>
@@ -19,17 +19,17 @@ const Posts = () => {
         <div className="flex-row post-data">
           <div className="flex-row">
             <p>1</p>
-            <span class="material-symbols-outlined icon">recommend</span>
+            <span className="material-symbols-outlined icon">recommend</span>
           </div>
           <p>1 Reply</p> 
         </div>
         <div className="flex-row post-btn">
           <button className="trans-btn">
-          <span class="material-symbols-outlined">thumb_up</span>
+          <span className="material-symbols-outlined">thumb_up</span>
             Like
           </button>
           <button className="trans-btn">
-          <span class="material-symbols-outlined">reply</span>
+          <span className="material-symbols-outlined">reply</span>
             Reply
           </button>
         </div>
@@ -59,7 +59,7 @@ const Posts = () => {
             <p>Ellaine Dela Cruz</p>
             <p className="txt-xs">Jan 1 • 8:00am</p>
           </div>
-          <span class="material-symbols-outlined icon">bookmark</span>
+          <span className="material-symbols-outlined icon">bookmark</span>
         </div>
         <div className='flex-row content'>
           <p>This is a sample post This is a sample post This is a sample post This is a sample post This is a sample post This is a sample post</p>
@@ -67,17 +67,17 @@ const Posts = () => {
         <div className="flex-row post-data">
           <div className="flex-row">
             <p>1</p>
-            <span class="material-symbols-outlined icon">recommend</span>
+            <span className="material-symbols-outlined icon">recommend</span>
           </div>
           <p>1 Reply</p> 
         </div>
         <div className="flex-row post-btn">
           <button className="trans-btn">
-          <span class="material-symbols-outlined">thumb_up</span>
+          <span className="material-symbols-outlined">thumb_up</span>
             Like
           </button>
           <button className="trans-btn">
-          <span class="material-symbols-outlined">reply</span>
+          <span className="material-symbols-outlined">reply</span>
             Reply
           </button>
         </div>

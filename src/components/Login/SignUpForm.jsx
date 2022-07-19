@@ -5,7 +5,7 @@ import api from "../../api/api";
 
 const SignUpForm = ({user, setUser}) => {
   const navigate = useNavigate()
-  const [error, setError] = useState()
+  const [error, setError] = useState('')
 
   const handleChange = (e, input) => {
     setUser(prev => ({...prev, [input]: e.target.value}))
@@ -15,6 +15,7 @@ const SignUpForm = ({user, setUser}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const data = {
+      name: user.username,
       email: user.email,
       password: user.password,
       password_confirmation: user.confirmPassword
@@ -27,10 +28,10 @@ const SignUpForm = ({user, setUser}) => {
       setUser(prev => ({...prev, client: response.headers['expiry']}))
       setUser(prev => ({...prev, id: response.data.data['id']}))
 
-      navigate('/create-workspace')
+      navigate('/workspace/create', { replace: true })
     }
     catch (error) {
-      setError(error.response.data.errors.full_messages)
+      setError(error.response.data.errors.full_messages) 
     }
   }
 

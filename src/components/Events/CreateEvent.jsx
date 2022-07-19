@@ -59,9 +59,6 @@ const CreateEvent = () => {
     }
   }
 
-  useEffect(() => {
-    console.log(event);
-  }, [event])
   return (
     <div className="col">
       <form className="box" onSubmit={handleSubmit}>

@@ -1,8 +1,8 @@
 import WorkspaceForm from "../components/Workspace/WorkspaceForm";
 
-const CreateWorkspacePage = () => {
+const CreateWorkspacePage = ({userId}) => {
   return (
-    <WorkspaceForm/>
+    <WorkspaceForm userId={userId}/>
   );
 }
  

@@ -1,9 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { isEmail } from "../helpers/emailValidation";
+import api from "../api/api";
+import { createChannelURL } from "../api/url";
 
-const CreateChannel = ({showCreateChannel, setShowCreateChannel}) => {
+const CreateChannel = ({showCreateChannel, setShowCreateChannel, user, setCurrWorkspace}) => {
   const inputRef = useRef()
   const [channel, setChannel] = useState({
+    id: -1,
     name: '',
     members: []
   })
@@ -12,10 +15,31 @@ const CreateChannel = ({showCreateChannel, setShowCreateChannel}) => {
     membersInput: ''
   })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (channel.name) {
-      closeModal()
+      const data = {
+        name: channel.name,
+        user_ids: [2366]
+      }
+      try {
+        const response = await api.post(createChannelURL, data, {
+          headers: {
+          'expiry': user.expiry,
+          'uid': user.email,
+          'access-token': user.accessToken, 
+          "client": user.client
+          }
+        })
+
+        setChannel(prev => ({...prev, id: response.data.data['id']}))
+        closeModal()
+      }
+      catch (error) {
+        setError(prev => ({...prev, nameInput: error.response.data.errors }))
+      }
+
+
     }
     else if (!channel.name) {
       setError(prev => ({...prev, nameInput: 'Please add a name for your channel'}))
@@ -54,6 +78,11 @@ const CreateChannel = ({showCreateChannel, setShowCreateChannel}) => {
   useEffect(() => {
     inputRef.current.value = ''
   }, [channel])
+
+  useEffect(() => {
+    setCurrWorkspace(prev => ({...prev, channels: [...prev.channels, channel]}))
+  }, [channel.id])
+  
 
   return (
     <div className="full-modal" style={ showCreateChannel ? {display: 'flex'} : {display: 'none'}}>

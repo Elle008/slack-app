@@ -332,6 +332,21 @@ select:focus {
 .workspace form input, .workspace form label, .workspace form button, .workspace form .error {
   width: 80%;
 }
+.workspace .box {
+  width: 70%;
+  margin: 50px;
+  padding: 50px;
+  justify-content: center;
+  align-items: center;
+}
+.workspace .box h3 {
+  font-weight: 400;
+  text-align: center;
+}
+.workspace .box button {
+  margin-top: 30px;
+  font-size: 1.2rem;
+}
 
 .ws-list {
   width: 70%;
@@ -421,9 +436,47 @@ header {
 
 .user {
   text-align: right;
+  position: relative;
+  cursor: pointer;
 }
 .user img {
   margin-right: 0;
+}
+
+.account {
+  background-color: #fff;
+  width: 180px;
+  height: 240px;
+  position: absolute;
+  top: 10vh;
+  right: 30px;
+  text-align: left;
+  justify-content: space-between;
+}
+.account span {
+  margin-left: 10px;
+  color: #F65405;
+}
+.account p {
+  margin: 5px 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+.account button {
+  font-size: 0.8rem;
+}
+.account a {
+  width: 100%;
+  text-align: center;
+}
+.account .close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #C5C4C4;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .dashboard {
@@ -530,8 +583,17 @@ header {
 .widget .widget-header span {
   margin-left: 5px;
 }
-.widget img {
+.widget .member {
   margin: 10px 8px;
+  width: 40px;
+  overflow: hidden;
+}
+.widget .member img {
+  margin: 0;
+}
+.widget .member p {
+  text-overflow: ellipsis;
+  text-align: center;
 }
 .widget ul {
   margin-top: 10px;

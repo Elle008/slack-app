@@ -123,8 +123,19 @@
     }
   }
 
-  img {
+  .member {
     margin: 10px 8px;
+    width: 40px;
+    overflow: hidden;
+
+    img {
+      margin: 0;
+    }
+    
+    p {
+      text-overflow: ellipsis;
+      text-align: center;
+    }
   }
 
   ul {
