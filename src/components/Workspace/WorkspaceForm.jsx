@@ -64,10 +64,6 @@ const WorkspaceForm = ({ user, setUser, setCurrWorkspace }) => {
 		inputRef.current.value = ""
 	}, [member.email])
 
-	useEffect(() => {
-		console.log(workspace)
-	})
-
 	return (
 		<div className="workspace">
 			<header>

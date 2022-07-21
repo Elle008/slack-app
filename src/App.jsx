@@ -26,19 +26,18 @@ function App() {
     image: {pic},
     accessToken:'',
     expiry: '',
-    client: '',
+    client: ''
   })
 
   const [users, setUsers] = useState([])
+  const [channelList, setChannelList] = useState([])
+  const [prevChats, setPrevChats] = useState([])
+  
   
   useEffect(() => {
     syncWithLocal(user.id, user, setUser)
     allUsers(user, setUsers)
   }, [user.id])
-
-  useEffect(() => {
-    console.log(users);
-  }, [users])
 
   return (
     <Routes>
@@ -47,12 +46,15 @@ function App() {
       <Route path='app' element={<Slack 
         user={user}
         users={users}
+        channelList={channelList}
+        setChannelList={setChannelList}
+        prevChats={prevChats}
       />}>
-        <Route index element={<Dashboard user={user}/>} />
-        <Route path='channel' element={<Channel />} />
+        <Route index element={<Dashboard users={users}/>} />
+        <Route path='channel/:channelId' element={<Channel channelList={channelList} user={user} users={users}/>} />
         <Route path='saved' element={<Saved />} />
         <Route path='events' element={<Events />} />
-        <Route path='message' element={<Message />} />
+        <Route path='message/:userId' element={<Message user={user} users={users} />} />
       </Route>
     </Routes>
   );

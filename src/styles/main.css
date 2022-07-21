@@ -410,6 +410,7 @@ select:focus {
   padding: 10px 20px;
   border: 2px solid transparent;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .side-panel .sub-items .sub-tab:hover {
   color: #F65405;
@@ -719,21 +720,21 @@ form.new-post {
   margin-bottom: 20px;
 }
 
-.new-chat {
+.chat-input {
   width: 50%;
   height: 17%;
   margin: 10px 0;
   padding: 0;
   position: relative;
 }
-.new-chat textarea {
+.chat-input textarea {
   height: 100%;
   width: 100%;
   background-color: #fff;
   border: 1px solid #F65405;
   margin-bottom: 0;
 }
-.new-chat button {
+.chat-input button {
   position: absolute;
   right: 30px;
   bottom: 20px;
@@ -743,6 +744,31 @@ form.new-post {
 .chat.grey {
   background-color: rgb(222, 220, 220);
   align-self: flex-end;
+}
+
+.new-chat {
+  position: absolute;
+  left: 15vw;
+  top: 15vh;
+  background-color: white;
+  justify-content: center;
+  padding: 0;
+}
+.new-chat .side-panel {
+  padding-bottom: 20px;
+  align-items: center;
+}
+.new-chat .side-panel span {
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  padding: 5px;
+  color: #C5C4C4;
+}
+.new-chat .side-panel .search {
+  width: 90%;
+  position: sticky;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=main.css.map */

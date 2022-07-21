@@ -24,7 +24,7 @@
   }
 }
 
-.new-chat {
+.chat-input {
   width: 50%;
   height: 17%;
   margin: 10px 0;
@@ -51,4 +51,32 @@
 .chat.grey {
   background-color: rgb(222, 220, 220);
   align-self: flex-end;
+}
+
+.new-chat {
+  position: absolute;
+  left: 15vw;
+  top: 15vh;
+  background-color: white;
+  justify-content: center;
+  padding: 0;
+
+  .side-panel {
+    padding-bottom: 20px;
+    align-items: center;
+
+    span {
+      width: 100%;
+      text-align: right;
+      cursor: pointer;
+      padding: 5px;
+      color: $grey;
+    }
+    .search {
+      width: 90%;
+      position: sticky;
+      z-index: 1;
+    }
+  }
+  
 }

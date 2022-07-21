@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react"
 import { isEmail } from "../helpers/emailValidation"
 import api from "../api/api"
-import { createChannelURL } from "../api/url"
+import { channelURL } from "../api/url"
 import { getData } from "../helpers/getID"
 
 const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users }) => {
@@ -17,7 +17,7 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users })
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await api.post(createChannelURL, channel, {
+			const response = await api.post(channelURL, channel, {
 				headers: {
 					expiry: user.expiry,
 					uid: user.email,
@@ -25,11 +25,10 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users })
 					client: user.client,
 				},
 			})
-      console.log(response);
+
 			closeModal()
 		} catch (error) {
-      console.log(error);
-			setError(error.response.data.errors)
+      return (error);
 		}
 	}
 
@@ -69,8 +68,6 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users })
 
 	useEffect(() => {
 		inputRef.current.value = ""
-    console.log('members', members);
-    console.log('channel', channel);
 	}, [channel])
 
 	return (

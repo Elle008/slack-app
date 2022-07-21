@@ -4,7 +4,7 @@ import NewPost from "./Channel/NewPost";
 import Members from "./Members";
 import EventsWidget from "./EventsWidget";
 
-const Dashboard = ({user}) => {
+const Dashboard = ({users}) => {
   return (
     <main className="dashboard flex-row">
       <div className="col">
@@ -12,7 +12,6 @@ const Dashboard = ({user}) => {
         <Posts/>
       </div>
       <div className="col">
-        <Members user={user}/>
         <EventsWidget/>
       </div>
     </main>
