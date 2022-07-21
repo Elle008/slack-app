@@ -20,6 +20,7 @@
       padding: 10px 20px;
       border: 2px solid transparent;
       overflow: hidden;
+      text-overflow: ellipsis;
 
       &:hover {
         color: $orange;

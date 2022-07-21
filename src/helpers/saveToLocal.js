@@ -3,15 +3,9 @@ export const syncWithLocal = (key, data, setter) => {
 	if (!saved) {
 		localStorage.setItem(key, JSON.stringify(data))
 	}
-	if (saved) {
-		setter((prev) => ({ ...prev, workspaces: saved.workspaces }))
+	else {
+		setter(prev => ({...prev, name: saved.name}))
 	}
-}
-
-export const addWorkspaceToLocal = (key, newData) => {
-	const temp = JSON.parse(localStorage.getItem(key))
-	temp.workspaces.push(newData)
-	localStorage.setItem(key, JSON.stringify(temp))
 }
 
 export const addChanneltoLocal = (key, newData) => {
@@ -23,4 +17,9 @@ export const addChanneltoLocal = (key, newData) => {
 export const loadLocal = (key, setter) => {
 	const local = JSON.parse(localStorage.getItem(key))
 	setter(local)
+}
+
+export const getUsername = (id, setter) => {
+	const localData = JSON.parse(localStorage.getItem(id))
+	setter(prev => ({...prev, name: localData.name}))
 }
