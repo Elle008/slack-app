@@ -33,6 +33,7 @@
 }
 
 .post {
+  width: 100%;
 
   .info {
     width: 100%;
@@ -104,49 +105,7 @@
   }
 }
 
-.widget {
-  width: 80%;
-  
-  div {
-    width: 100%;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .widget-header {
-    justify-content: space-between;
-    margin-top: 0;
-
-    span {
-      margin-left: 5px;
-    }
-  }
-
-  .member {
-    margin: 10px 8px;
-    width: 40px;
-    overflow: hidden;
-
-    img {
-      margin: 0;
-    }
-    
-    p {
-      text-overflow: ellipsis;
-      text-align: center;
-    }
-  }
-
-  ul {
-    margin-top: 10px;
-    width: 100%;
-  }
-
-  li {
-    width: 100%;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid $grey;
-  }
+.posts {
+  width: 100%;
 }
+

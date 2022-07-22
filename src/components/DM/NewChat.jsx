@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-
 const NewChat = ({ setShowChatModal, showChatModal, users, setChatWith, chatWith }) => {
 	const [searchList, setSearchList] = useState([users])
 	const [searchKey, setSearchKey] = useState('')
@@ -30,7 +29,7 @@ const NewChat = ({ setShowChatModal, showChatModal, users, setChatWith, chatWith
 	return (
 		<div className="new-chat" style={showChatModal ? { display: "flex" } : { display: "none" }}>
 			<div className="side-panel flex-col">
-				<span class="material-symbols-outlined" onClick={closeModal}>
+				<span className="material-symbols-outlined" onClick={closeModal}>
 					close
 				</span>
 				<input type="search" className="search" placeholder="search by email" onChange={handleChange}/>

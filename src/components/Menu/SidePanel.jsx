@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import ChannelList from "./ChannelList";
-import ChatTabs from "../DM/ChatTabs";
+import ChannelList from "../Channel/ChannelList";
 
-const SidePanel = ({setShowCreateChannel, setShowChatModal, chatWith, channelList, prevChats}) => {
+
+const SidePanel = ({setShowCreateChannel, setShowChatModal, chatWith, channelList}) => {
 
   const openChannelModal = () => {
     setShowCreateChannel(true)
@@ -44,7 +44,7 @@ const SidePanel = ({setShowCreateChannel, setShowChatModal, chatWith, channelLis
         </nav>
         <div className="flex-col sub-items">
           <NavLink to={`/app/message/${chatWith.id}`} className='sub-tab'>{chatWith.email}</NavLink>
-          <ChatTabs prevChats={prevChats}/>
+
 
         </div>
       </div>

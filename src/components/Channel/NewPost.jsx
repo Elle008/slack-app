@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import api from "../../api/api";
-import { sendMessageURL } from "../../api/url";
+import { headers } from "../../api/headers";
 import photo from '../../assets/profile.png'
 
 const NewPost = ({channelId, user}) => {
   const inputRef = useRef()
+
   const [post, setPost] = useState({
-    receiver_id: Number(channelId),
+    receiver_id: 0,
     receiver_class: 'Channel',
     body: ''
   })
@@ -14,24 +15,23 @@ const NewPost = ({channelId, user}) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await api.post(sendMessageURL, post, {
-        headers: {
-          expiry: user.expiry,
-          uid: user.email,
-          "access-token": user.accessToken,
-          client: user.client,
-        }
+      const response = await api.post('/api/v1/messages', post, {
+        headers: headers
       })
+      setPost(prev => ({...prev, body: ''}))
     }
     catch (error) {
       return (error);
     }
-    inputRef.current.value = ''
   }
 
   const handleChange = (e) => {
     setPost(prev => ({...prev, body: e.target.value}))
   }
+  
+  useEffect(() => {
+    setPost(prev => ({...prev, receiver_id: Number(channelId)}))
+  }, [channelId])
 
 
   return (
@@ -40,6 +40,7 @@ const NewPost = ({channelId, user}) => {
       <div className="flex-col">
         <textarea 
           placeholder="Tag @channel or @username on your post"
+          value={post.body}
           ref={inputRef}
           onChange={handleChange}
           ></textarea>

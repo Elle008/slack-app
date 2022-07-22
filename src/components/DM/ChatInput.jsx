@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useParams } from "react-router-dom"
 import api from "../../api/api"
+import { headers } from "../../api/headers"
 import { sendMessageURL } from "../../api/url"
 
 const ChatInput = ({ user, users }) => {
@@ -16,12 +17,7 @@ const ChatInput = ({ user, users }) => {
 		e.preventDefault()
 		try {
 			const response = await api.post("/api/v1/messages", message, {
-				headers: {
-					expiry: user.expiry,
-					uid: user.email,
-					"access-token": user.accessToken,
-					client: user.client,
-				},
+				headers: headers
 			})
 			inputRef.current.value = ""
 		} catch (error) {
@@ -29,13 +25,6 @@ const ChatInput = ({ user, users }) => {
 		}
 	}
 
-	useEffect(() => {
-		console.log(message)
-		console.log(user.expiry)
-		console.log(user.accessToken)
-		console.log(user.client)
-		console.log(user.email)
-	}, [message.body])
 	const handleChange = (e) => {
 		setMessage((prev) => ({ ...prev, body: e.target.value }))
 	}
