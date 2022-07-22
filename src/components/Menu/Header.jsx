@@ -1,10 +1,12 @@
 import logo from "../../assets/logo.png"
 import photo from "../../assets/profile.png"
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 const Header = ({ user, setShowSettings }) => {
-	const openModal = () => {
-		setShowSettings(true)
+	const navigate = useNavigate()
+	const handleClick = () => {
+		navigate('/')
 	}
 
 	return (
@@ -13,8 +15,12 @@ const Header = ({ user, setShowSettings }) => {
 
 			<input type="search" placeholder="Search" />
 
-			<div className="user flex-row" onClick={openModal}>
-				{user.name}
+			<div className="user flex-row">
+				<div>
+					<p>{localStorage.getItem('uid')}</p>
+					<a onClick={handleClick}>Logout</a>
+				</div>
+				
 				<img src={photo} className="img-s" />
 			</div>
 		</header>

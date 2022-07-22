@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react"
 import { Outlet } from "react-router-dom"
 import SidePanel from "../components/Menu/SidePanel"
 import Header from "../components/Menu/Header"
-import CreateChannel from "../components/CreateChannel"
-import AccountSettings from "../components/Menu/Account"
+import CreateChannel from "../components/Channel/CreateChannel"
 import api from "../api/api"
 import { channelURL } from "../api/url"
 import NewChat from "../components/DM/NewChat"
+import { headers } from "../api/headers"
 
-const Slack = ({ user, users, channelList, setChannelList, prevChats }) => {
+const Slack = ({ user, users, channelList, setChannelList }) => {
 	const [showCreateChannel, setShowCreateChannel] = useState(false)
 	const [showChatModal, setShowChatModal] = useState(false)
-	const [showSettings, setShowSettings] = useState(false)
 	const [chatWith, setChatWith] = useState({})
 
 
@@ -19,12 +18,7 @@ const Slack = ({ user, users, channelList, setChannelList, prevChats }) => {
 		;(async () => {
 			try {
 				const response = await api.get(channelURL, {
-					headers: {
-						expiry: user.expiry,
-						uid: user.email,
-						"access-token": user.accessToken,
-						client: user.client,
-					},
+					headers: headers
 				})
 				setChannelList(response.data.data)
 			} catch (error) {
@@ -35,7 +29,7 @@ const Slack = ({ user, users, channelList, setChannelList, prevChats }) => {
 
 	return (
 		<div>
-			<Header user={user} setShowSettings={setShowSettings} />
+			<Header user={user} />
 			<section className="flex-row">
 				<SidePanel
 					setShowCreateChannel={setShowCreateChannel}
@@ -43,7 +37,6 @@ const Slack = ({ user, users, channelList, setChannelList, prevChats }) => {
 					user={user}
 					channelList={channelList}
 					chatWith={chatWith}
-					prevChats={prevChats}
 				/>
 				<Outlet />
 			</section>
@@ -61,7 +54,6 @@ const Slack = ({ user, users, channelList, setChannelList, prevChats }) => {
 				setChatWith={setChatWith}
 				chatWith={chatWith}
 			/>
-			<AccountSettings user={user} showSettings={showSettings} setShowSettings={setShowSettings} />
 		</div>
 	)
 }

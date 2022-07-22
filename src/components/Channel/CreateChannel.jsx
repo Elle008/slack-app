@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react"
-import { isEmail } from "../helpers/emailValidation"
-import api from "../api/api"
-import { channelURL } from "../api/url"
-import { getData } from "../helpers/getID"
+import { isEmail } from "../../helpers/emailValidation"
+import api from "../../api/api"
+import { getData } from "../../helpers/getID"
+import { headers } from "../../api/headers"
 
-const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users }) => {
+const CreateChannel = ({ showCreateChannel, setShowCreateChannel, users }) => {
 	const inputRef = useRef()
 	const [channel, setChannel] = useState({
 		name: "",
@@ -17,18 +17,12 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users })
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await api.post(channelURL, channel, {
-				headers: {
-					expiry: user.expiry,
-					uid: user.email,
-					"access-token": user.accessToken,
-					client: user.client,
-				},
+			const response = await api.post("/api/v1/channels", channel, {
+				headers: headers,
 			})
-
 			closeModal()
 		} catch (error) {
-      return (error);
+			return error
 		}
 	}
 
@@ -56,8 +50,8 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users })
 
 	const deleteMember = (deleted) => {
 		const filteredMembers = members.filter((i) => i.id !== deleted)
-    const filteredIds = channel.user_ids.filter((i) => i !== deleted)
-    setMembers(filteredMembers)
+		const filteredIds = channel.user_ids.filter((i) => i !== deleted)
+		setMembers(filteredMembers)
 
 		setChannel((prev) => ({ ...prev, user_ids: filteredIds }))
 	}
@@ -76,24 +70,18 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, user, users })
 				<h3>Create Channel</h3>
 				{error && <p className="error">{error}</p>}
 				<label>Channel Name</label>
-				<input placeholder="Ex. Announcements or Project X" 
-          onChange={handleChange} 
-        />
+				<input placeholder="Ex. Announcements or Project X" onChange={handleChange} />
 				<label className="flex-row">
 					Add select teammates to this channel
 					<p>(Optional)</p>
 				</label>
-				<input placeholder="Type email address then press Enter"
-          ref={inputRef} 
-          onKeyPress={handleKeyPress} 
-        />
+				<input placeholder="Type email address then press Enter" ref={inputRef} onKeyPress={handleKeyPress} />
 				<div className="chips-container">
 					{members.map((item) => {
 						return (
 							<div className="chips flex-row">
 								<p>{item.email}</p>
-								<span className="material-symbols-outlined" 
-                  onClick={() => deleteMember(item.id)}>
+								<span className="material-symbols-outlined" onClick={() => deleteMember(item.id)}>
 									close
 								</span>
 							</div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import api from "../../api/api"
+import { headers } from "../../api/headers"
 import Chatbox from "./Chatbox"
 import ChatInput from "./ChatInput"
 
@@ -16,12 +17,7 @@ const Message = ({ user, users}) => {
 		;(async () => {
 			try {
 				const response = await api.get(`/api/v1/messages?receiver_id=${userId}&receiver_class=User`, {
-					headers: {
-						expiry: user.expiry,
-						uid: user.email,
-						"access-token": user.accessToken,
-						client: user.client,
-					},
+					headers: headers
 				})
 				const messageData = response.data.data
 				if (messageData.length > 0) {

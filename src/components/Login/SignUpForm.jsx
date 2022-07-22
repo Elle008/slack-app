@@ -7,9 +7,9 @@ const SignUpForm = ({ user, setUser }) => {
 	const navigate = useNavigate()
 	const [error, setError] = useState("")
 
-	const handleChange = (e, input) => {
-		setUser((prev) => ({ ...prev, [input]: e.target.value }))
-		setError()
+	const handleChange = (e, inputName) => {
+		setUser((prev) => ({ ...prev, [inputName]: e.target.value }))
+		setError("")
 	}
 
 	const handleSubmit = async (e) => {
@@ -21,13 +21,16 @@ const SignUpForm = ({ user, setUser }) => {
 		}
 		try {
 			const response = await api.post("/api/v1/auth/", data)
-
+			localStorage.setItem('access-token', response.headers["access-token"])
+			localStorage.setItem('expiry', response.headers["expiry"])
+			localStorage.setItem('client', response.headers["client"])
+			localStorage.setItem('uid', user.email)
 			setUser((prev) => ({ ...prev, accessToken: response.headers["access-token"] }))
 			setUser((prev) => ({ ...prev, expiry: response.headers["client"] }))
 			setUser((prev) => ({ ...prev, client: response.headers["expiry"] }))
 			setUser((prev) => ({ ...prev, id: response.data.data["id"] }))
 
-			navigate("/workspace/create", { replace: true })
+			navigate("/app", { replace: true })
 		} catch (error) {
 			setError(error.response.data.errors.full_messages)
 		}

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import logo from "../../assets/logo.png"
 import api from "../../api/api"
@@ -20,7 +20,10 @@ const LoginForm = ({ user, setUser }) => {
 		}
 		try {
 			const response = await api.post("/api/v1/auth/sign_in", data)
-
+			localStorage.setItem('access-token', response.headers["access-token"])
+			localStorage.setItem('expiry', response.headers["expiry"])
+			localStorage.setItem('client', response.headers["client"])
+			localStorage.setItem('uid', user.email)
 			setUser((prev) => ({ ...prev, accessToken: response.headers["access-token"] }))
 			setUser((prev) => ({ ...prev, expiry: response.headers["expiry"] }))
 			setUser((prev) => ({ ...prev, client: response.headers["client"] }))

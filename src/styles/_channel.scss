@@ -3,3 +3,102 @@
 form.new-post {
   margin-top: 0;
 }
+
+.widget {
+  width: 80%;
+  
+  div {
+    width: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .widget-header {
+    justify-content: space-between;
+    margin-top: 0;
+
+    span {
+      margin-left: 5px;
+    }
+  }
+
+  .member {
+    margin: 10px 8px;
+    width: 40px;
+
+    position: relative;
+
+    img {
+      margin: 0;
+    }
+    
+    .tooltip {
+      visibility: hidden;
+      padding: 5px;
+      text-align: center;
+      font-size: .8rem;
+      border-radius: 10px;
+      background-color: $light-orange;
+      position: absolute;
+      bottom: -15px;
+      z-index: 10;
+
+    }
+
+    img:hover ~ .tooltip{
+      visibility: visible;
+    }
+
+  }
+
+  ul {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  li {
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid $grey;
+    cursor: pointer;
+  }
+
+  .widget-header {
+    width: 100%;
+
+    h4 {
+      margin-bottom: 10px;
+    }
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.searchList {
+  width: 100%;
+  max-height: 50vh;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { 
+    display: none;
+  }
+
+  li {
+    width: 100%;
+
+    p {
+      width: 80%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  li:hover p, li:hover span {
+    color: $orange;
+  }
+}

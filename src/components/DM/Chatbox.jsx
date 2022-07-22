@@ -1,7 +1,7 @@
 import React from "react"
 import { formatDate } from "../../helpers/formatDate"
 
-const Chatbox = ({ conversation }) => {
+const Chatbox = ({ conversation, user }) => {
 	const sortedConvo = conversation.sort((a, b) => {
 		return new Date(a.created_at) - new Date(b.created_at)
 	})
@@ -9,7 +9,7 @@ const Chatbox = ({ conversation }) => {
 		<ul className="flex-col chatbox box">
 			{sortedConvo.map((item) => {
 				return (
-					<li className="flex-col chat">
+					<li className={`flex-col chat ${item.sender.email === user.email && 'grey'}`}>
 						<p className="txt-xs">
 							{" "}
 							{item.sender.email} • {formatDate(item.created_at)}
@@ -18,11 +18,6 @@ const Chatbox = ({ conversation }) => {
 					</li>
 				)
 			})}
-
-			<li className="flex-col chat grey">
-				<p className="txt-xs"> Username • 1hr</p>
-				<p>This is a chat vxcgdhf dhnfhf hdhfh sgdh</p>
-			</li>
 		</ul>
 	)
 }
