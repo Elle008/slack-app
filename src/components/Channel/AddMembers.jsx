@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react"
 import api from "../../api/api"
 import { headers } from "../../api/headers"
-import photo from "../../assets/profile.png"
 
-const AddMembers = ({ currChannel, setCurrChannel, users, user }) => {
-	const inputRef =  useRef()
+const AddMembers = ({ currChannel, users }) => {
+	const inputRef = useRef()
 	const [searchList, setSearchList] = useState([])
 	const [searchKey, setSearchKey] = useState(" ")
 	const handleChange = (e) => {
@@ -13,14 +12,13 @@ const AddMembers = ({ currChannel, setCurrChannel, users, user }) => {
 	const handleClick = async (memId) => {
 		const data = {
 			id: currChannel.id,
-    	member_id: memId 
+			member_id: memId,
 		}
 		try {
-			const response = await api.post('/api/v1/channel/add_member', data, {
-				headers: headers
+			const response = await api.post("/api/v1/channel/add_member", data, {
+				headers: headers,
 			})
-		}
-		catch (error) {
+		} catch (error) {
 			return error
 		}
 	}
@@ -34,14 +32,20 @@ const AddMembers = ({ currChannel, setCurrChannel, users, user }) => {
 
 	useEffect(() => {
 		if (!inputRef.current.value) {
-			setSearchKey(' ')
+			setSearchKey(" ")
 		}
 	})
 	return (
 		<div className="widget box">
 			<div className="widget-header">
 				<h4>Add New Members</h4>
-				<input type="serach" data-testid="search-input" placeholder="search by email" ref={inputRef} onChange={handleChange} />
+				<input
+					type="serach"
+					data-testid="search-input"
+					placeholder="search by email"
+					ref={inputRef}
+					onChange={handleChange}
+				/>
 			</div>
 			<ul className="searchList flex-col">
 				{searchList.map((item) => (

@@ -13,8 +13,6 @@ const Header = ({ user, setShowSettings }) => {
 		<header>
 			<img src={logo} className="logo" />
 
-			<input type="search" placeholder="Search" />
-
 			<div className="user flex-row">
 				<div>
 					<p>{localStorage.getItem('uid')}</p>

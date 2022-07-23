@@ -9,7 +9,7 @@ const Chatbox = ({ conversation, user }) => {
 		<ul className="flex-col chatbox box">
 			{sortedConvo.map((item) => {
 				return (
-					<li className={`flex-col chat ${item.sender.email === user.email && 'grey'}`}>
+					<li className={`flex-col chat ${item.sender.email === localStorage.getItem('uid') && 'grey'}`}>
 						<p className="txt-xs">
 							{" "}
 							{item.sender.email} • {formatDate(item.created_at)}

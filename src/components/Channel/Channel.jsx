@@ -9,13 +9,14 @@ import AddMembers from "./AddMembers"
 import { headers } from "../../api/headers"
 
 
-const Channel = ({ channelList, user, users }) => {
+const Channel = ({ user, users}) => {
 	const { channelId } = useParams()
 	const [currChannel, setCurrChannel] = useState({
 		id: 0,
 		name: "",
 		members: [],
 	})
+
 
 	useEffect(() => {
 		;(async () => {
@@ -31,9 +32,7 @@ const Channel = ({ channelList, user, users }) => {
 		})()
 	}, [channelId])
 
-	useEffect(() => {
-		console.log(currChannel);
-	}, [currChannel])
+
 
 	return (
 		<main className="flex-row dashboard">

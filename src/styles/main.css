@@ -415,6 +415,9 @@ select:focus {
 .side-panel .sub-items .sub-tab:hover {
   color: #F65405;
 }
+.side-panel .sub-items .sub-tab active {
+  color: #F65405;
+}
 
 .tab {
   width: 100%;

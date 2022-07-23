@@ -7,7 +7,6 @@ import Channel from "./components/Channel/Channel"
 import Message from "./components/DM/Message"
 import { allUsers } from "./api/apiRequest"
 
-
 function App() {
 	const [user, setUser] = useState({
 		id: "",
@@ -23,7 +22,7 @@ function App() {
 	const [channelList, setChannelList] = useState([])
 
 	useEffect(() => {
-		allUsers('/api/v1/users', setUsers)
+		allUsers("/api/v1/users", setUsers)
 	}, [user.id])
 
 	return (
@@ -32,14 +31,7 @@ function App() {
 			<Route path="sign-up" element={<SignUpPage user={user} setUser={setUser} />} />
 			<Route
 				path="app"
-				element={
-					<Slack
-						user={user}
-						users={users}
-						channelList={channelList}
-						setChannelList={setChannelList}
-					/>
-				}
+				element={<Slack user={user} users={users} channelList={channelList} setChannelList={setChannelList} />}
 			>
 				<Route path="channel/:channelId" element={<Channel channelList={channelList} user={user} users={users} />} />
 				<Route path="message/:userId" element={<Message user={user} users={users} />} />

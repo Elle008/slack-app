@@ -14,18 +14,7 @@ const Slack = ({ user, users, channelList, setChannelList }) => {
 	const [chatWith, setChatWith] = useState({})
 
 
-	useEffect(() => {
-		;(async () => {
-			try {
-				const response = await api.get(channelURL, {
-					headers: headers
-				})
-				setChannelList(response.data.data)
-			} catch (error) {
-				return error
-			}
-		})()
-	}, [])
+
 
 	return (
 		<div>

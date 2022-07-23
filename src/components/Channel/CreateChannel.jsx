@@ -6,29 +6,39 @@ import { headers } from "../../api/headers"
 
 const CreateChannel = ({ showCreateChannel, setShowCreateChannel, users }) => {
 	const inputRef = useRef()
+	const [error, setError] = useState([])
+	const [members, setMembers] = useState([])
 	const [channel, setChannel] = useState({
 		name: "",
 		user_ids: [],
 	})
 
-	const [members, setMembers] = useState([])
-	const [error, setError] = useState("")
-
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		try {
-			const response = await api.post("/api/v1/channels", channel, {
-				headers: headers,
-			})
-			closeModal()
-		} catch (error) {
-			return error
+		if (error.length <= 0) {
+			try {
+				const response = await api.post("/api/v1/channels", channel, {
+					headers: headers,
+				})
+				console.log(response.data.errors)
+				if (response.data.errors) {
+					setError(response.data.errors)
+				} else {
+					closeModal()
+				}
+			} catch (error) {
+				console.log(error)
+			}
 		}
 	}
 
-	const handleChange = (e, input) => {
+	const handleChange = (e) => {
 		setChannel((prev) => ({ ...prev, name: e.target.value }))
-		setError("")
+		setError([])
+	}
+
+	const clearError = () => {
+		setError([])
 	}
 
 	const handleKeyPress = (e) => {
@@ -40,10 +50,10 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, users }) => {
 					setChannel((prev) => ({ ...prev, user_ids: [...prev.user_ids, data.id] }))
 					setMembers((prev) => [...prev, { id: data.id, email: e.target.value }])
 				} else {
-					setError("User doesnt exist")
+					setError((prev) => [...prev, "User doent exist"])
 				}
 			} else {
-				setError("Invalid email address")
+				setError((prev) => [...prev, "Invalid Email Address"])
 			}
 		}
 	}
@@ -52,7 +62,6 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, users }) => {
 		const filteredMembers = members.filter((i) => i.id !== deleted)
 		const filteredIds = channel.user_ids.filter((i) => i !== deleted)
 		setMembers(filteredMembers)
-
 		setChannel((prev) => ({ ...prev, user_ids: filteredIds }))
 	}
 
@@ -75,7 +84,7 @@ const CreateChannel = ({ showCreateChannel, setShowCreateChannel, users }) => {
 					Add select teammates to this channel
 					<p>(Optional)</p>
 				</label>
-				<input placeholder="Type email address then press Enter" ref={inputRef} onKeyPress={handleKeyPress} />
+				<input placeholder="Type email address then press Enter" ref={inputRef} onChange={clearError} onKeyPress={handleKeyPress} />
 				<div className="chips-container">
 					{members.map((item) => {
 						return (

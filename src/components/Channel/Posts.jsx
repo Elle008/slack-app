@@ -4,7 +4,7 @@ import { headers } from "../../api/headers"
 import photo from "../../assets/profile.png"
 import { formatDate } from "../../helpers/formatDate"
 
-const Posts = ({ channelId, user }) => {
+const Posts = ({ channelId }) => {
 	const [posts, setPosts] = useState([])
 
 	useEffect(() => {
@@ -16,10 +16,10 @@ const Posts = ({ channelId, user }) => {
 				setPosts(response.data.data)
 			}
 			catch (error) {
-				console.log(error);
+				return error;
 			}
 		})()
-	})
+	}, [channelId])
 	return (
 		<div className="posts">
 			{posts.map((item) => (

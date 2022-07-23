@@ -3,7 +3,7 @@ import api from "../../api/api";
 import { headers } from "../../api/headers";
 import photo from '../../assets/profile.png'
 
-const NewPost = ({channelId, user}) => {
+const NewPost = ({channelId}) => {
   const inputRef = useRef()
 
   const [post, setPost] = useState({
